@@ -13,7 +13,7 @@ export class Comment {
 	text: string;
 
 	@Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'Track' })
-	comments: Track;
+	track: Track;
 }
 
 export const CommentSchema = SchemaFactory.createForClass(Comment);
