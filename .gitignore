@@ -10,9 +10,11 @@
 /server/dist
 /server/.env
 /server/static
+/client/node_modules
 
 # testing
-/coverage
+/server/coverage
+/client/coverage
 
 # next.js
 /client/.next/
@@ -20,6 +22,8 @@
 
 # production
 /build
+/server/build
+/client/build
 
 # misc
 .DS_Store
