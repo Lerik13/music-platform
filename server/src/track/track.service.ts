@@ -5,16 +5,20 @@ import { Track, TrackDocument } from './schemas/track.schema';
 import { Comment, CommentDocument } from './schemas/comment.schema';
 import { CreateTrackDto } from './dto/create-track.dto';
 import { CreateCommentDto } from './dto/create-comment.dto';
+import { FileService, FileType } from 'src/file/file.service';
 
 @Injectable()
 
 export class TrackService {
 	
 	constructor(@InjectModel(Track.name) private trackModel: Model<TrackDocument>,
-				@InjectModel(Comment.name) private commentModel: Model<CommentDocument>) {}
+				@InjectModel(Comment.name) private commentModel: Model<CommentDocument>,
+				private fileService: FileService) {}
 	
-	async create(dto: CreateTrackDto): Promise<Track> {
-		const track = await this.trackModel.create({...dto, listens: 0})
+	async create(dto: CreateTrackDto, picture, audio): Promise<Track> {
+		const picturePath = this.fileService.createFile(FileType.IMAGE, picture)
+		const audioPath = this.fileService.createFile(FileType.AUDIO, audio)
+		const track = await this.trackModel.create({...dto, listens: 0, picture: picturePath, audio: audioPath})
 		return track
 	}
 	
@@ -28,9 +32,22 @@ export class TrackService {
 		return track
 	}
 	
-	async delete(id: ObjectId): Promise<ObjectId> {
+	async deleteOne(id: ObjectId): Promise<ObjectId> {
 		const track = await this.trackModel.findByIdAndDelete(id)
 		return track.id
+	}
+
+	async deleteAll(): Promise<Boolean> {
+		try {
+			const tracks = await this.trackModel.find()
+			for (const track of tracks) {
+				await this.trackModel.findByIdAndDelete(track.id)
+			}
+			return true
+		} catch(e) {
+			console.log(e)
+			return false
+		}
 	}
 
 	async addComment(dto: CreateCommentDto): Promise<Comment> {

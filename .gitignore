@@ -9,6 +9,7 @@
 /server/node_modules
 /server/dist
 /server/.env
+/server/static
 
 # testing
 /coverage
