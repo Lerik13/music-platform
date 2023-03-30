@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Param, Delete, UseInterceptors } from '@nestjs/common';
+import { Controller, Get, Post, Body, Param, Delete, UseInterceptors, Query } from '@nestjs/common';
 import { UploadedFiles } from '@nestjs/common/decorators';
 import { FileFieldsInterceptor } from '@nestjs/platform-express/multer';
 import { ObjectId } from 'mongoose';
@@ -23,8 +23,14 @@ export class TrackController {
 	}
 	
 	@Get()
-	getAll() {
-		return this.trackService.getAll()
+	getAll( @Query('count') count: number,
+			@Query('offset') offset: number ) {
+		return this.trackService.getAll(count, offset)
+	}
+
+	@Get('/search')
+	search(@Query('query') query: string) {
+		return this.trackService.search(query)
 	}
 
 	@Get(':id')
