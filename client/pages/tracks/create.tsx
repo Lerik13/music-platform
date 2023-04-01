@@ -2,7 +2,7 @@ import React from 'react'
 import MainLayout from '@/layouts/MainLayout'
 
 
-const Index = () => {
+const CreateTrack = () => {
 	return (
 		<MainLayout>
 			Create track
@@ -10,4 +10,4 @@ const Index = () => {
 	)
 }
 
-export default Index
+export default CreateTrack
