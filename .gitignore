@@ -10,6 +10,7 @@
 /server/dist
 /server/.env
 /server/static
+/server/dist/static
 /client/node_modules
 
 # testing
