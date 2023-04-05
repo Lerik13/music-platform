@@ -7,7 +7,7 @@ import TextField from '@mui/material/TextField';
 import { ITrack } from '@/types/track'
 
 const TrackPage = () => {
-	const track: ITrack = {_id: '1', name: "track 1", artist: "artist 1", text: "bla-la-la-la", listens: 5, audio: "http://localhost:5000/audio/0fb7a206-a59f-4717-9892-d761fd28f463.mp3", picture:"http://localhost:5000/image/95a34761-441b-46d7-ac6f-f100aad6c5f6.jpg", comments: [{username: 'Bob', text: "good song"}, {username: 'Mary', text: "the best"}]}
+	const track: ITrack = {_id: '1', name: "track 1", artist: "artist 1", text: "bla-la-la-la", listens: 5, audio: "http://localhost:5000/audio/cde56183-cdfd-4a56-8f10-fc9046f4f8a3.mp3", picture:"http://localhost:5000/image/2ec7e8a7-9677-45df-9f08-32a411e558f6.jpg", comments: [{username: 'Bob', text: "good song"}, {username: 'Mary', text: "the best"}]}
 	const router = useRouter()
 
 	return (
