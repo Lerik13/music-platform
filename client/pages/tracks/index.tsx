@@ -7,6 +7,7 @@ import Box from '@mui/material/Box';
 import { useRouter } from 'next/router'
 import { ITrack } from '@/types/track'
 import TrackList from '@/components/TrackList'
+import { useActions } from '@/hooks/useActions'
 
 const Index = () => {
 	const router = useRouter()
