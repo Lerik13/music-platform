@@ -6,11 +6,11 @@ import Player from '@/components/Player'
 const MainLayout: React.FC = ({children}) => {
 	return (
 		<>
-			<Navbar />
+			{/*<Navbar />*/}
 			<Container style={{margin: '90px 0'}}>
 				{children}
 			</Container>
-			<Player />
+			{/*<Player />*/}
 		</>
 	)
 }

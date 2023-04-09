@@ -5,6 +5,7 @@ import styles from '../styles/Player.module.scss'
 import TrackProgress from './TrackProgress';
 import { useTypedSelector } from '@/hooks/useTypedSelector';
 import { useActions } from '@/hooks/useActions';
+import {API_URL} from "../config";
 
 let audio;
 
@@ -18,14 +19,14 @@ const Player = () => {
 			audio = new Audio()
 		} else {
 			setAudio()
-			//playTrack()
-			play()
+			playTrack()
+			//play()
 		}
 	}, [active])
 
 	const setAudio = () => {
 		if (active) {
-			audio.src = active.audio
+			audio.src = API_URL + active.audio
 			audio.volume = volume / 100
 			audio.onloadedmetadata = () => {
 				setDuration(Math.ceil(audio.duration))

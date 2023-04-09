@@ -7,6 +7,7 @@ import { IconButton } from '@mui/material';
 import { Pause, PlayArrow, Delete } from '@mui/icons-material';
 import { useRouter } from 'next/router'
 import { useActions } from '@/hooks/useActions'
+import {API_URL} from "../config";
 
 interface TrackItemProps {
 	track: ITrack;
@@ -31,7 +32,7 @@ const TrackItem: React.FC<TrackItemProps> = ({track, active = false}) => {
 					: <PlayArrow />
 				}
 			</IconButton>
-			<img width={70} height={70} src={track.picture} alt={track.name} />
+			<img width={70} height={70} src={API_URL + track.picture} alt={track.name} />
 			<Grid container direction="column" style={{width: 200, margin: '0 20px'}}>
 				<div>{track.name}</div>
 				<div style={{fontSize:12, color: 'gray'}}>{track.artist}</div>
